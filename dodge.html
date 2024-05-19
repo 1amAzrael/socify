@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dodge the Falling Objects</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    overflow: hidden;
+    background: url(./img/back.jpg);
+    background-size: cover;
+    color: aqua  ;
+  }
+  #game-container {
+    position: relative;
+    width: 50%;
+    height: 90vh;
+    margin: auto;
+    border: 1px solid #333;
+    overflow: hidden;
+    background-color: black;
+  }
+  #player {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70px;
+    height: 70px;
+    background-image: url(./img/luf.png);
+    background-size: cover;
+    border-radius: 25px; 
+  }
+  .falling-object {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-image: url(./img/obj.png);
+    background-size: cover;
+  }
+  .sett {
+    height: max-content;
+    border: 1px solid wheat;
+  position: absolute;
+  color: wheat;
+  top: 10px;
+  left: 10px;
+  z-index: 9999; /* Ensure it's above other elements */
+}
+label{
+  font-size: 20px;
+}
+
+</style>
+</head>
+<body>
+  <div class="sett">
+    <label for="">choose your character:</label> <br>
+    <input type="file" id="backgroundInput" accept="image/*" onchange="changePlayerBackground(this)">
+    <br> <br>
+    <label for="">choose the object:</label> <br>
+    <input type="file" id="fallingObjectBackgroundInput" accept="image/*" onchange="changeFallingObjectBackground(this)">
+  </div>
+  
+    
+  <h1>Dodge the Falling Objects</h1>
+  <div id="game-container">
+    <div id="player"></div>
+  </div>
+
+  <script>
+    function changeFallingObjectBackground(input) {
+  const file = input.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      const fallingObjects = document.querySelectorAll('.falling-object');
+      fallingObjects.forEach(object => {
+        object.style.backgroundImage = `url('${e.target.result}')`;
+      });
+    };
+    reader.readAsDataURL(file);
+  }
+}
+
+    function changePlayerBackground(input) {
+  const file = input.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      player.style.backgroundImage = `url('${e.target.result}')`;
+    };
+    reader.readAsDataURL(file);
+  }
+}
+
+    const gameContainer = document.getElementById('game-container');
+    const player = document.getElementById('player');
+    let playerPosition = 50; // Initial player position (in percentage)
+    let intervalDuration = 1000; // Initial interval duration (in milliseconds)
+    let speedIncreaseInterval = 10000; // Interval to increase speed (in milliseconds)
+    let timerId;
+    let speedTimerId;
+
+    // Move the player left or right
+    function movePlayer(direction) {
+      playerPosition += direction * 3; // Move 5% of the game container width
+      if (playerPosition < 0) {
+        playerPosition = 0;
+      } else if (playerPosition > 100) {
+        playerPosition = 100;
+      }
+      player.style.left = `${playerPosition}%`;
+    }
+
+    // Generate a falling object
+    function createFallingObject() {
+      const object = document.createElement('div');
+      object.classList.add('falling-object');
+      object.style.left = `${Math.random() * 100}%`;
+      gameContainer.appendChild(object);
+
+      // Animate the falling object
+      const intervalId = setInterval(() => {
+        const bottomPosition = object.offsetTop + object.offsetHeight;
+        if (bottomPosition < gameContainer.offsetHeight) {
+          object.style.top = `${object.offsetTop + 5}px`; // Fall 5 pixels per frame
+        } else {
+          clearInterval(intervalId);
+          gameContainer.removeChild(object);
+        }
+
+
+        // Check collision with player
+        const playerRect = player.getBoundingClientRect();
+        const objectRect = object.getBoundingClientRect();
+        const playerCenterX = playerRect.left + player.offsetWidth / 2;
+        const playerCenterY = playerRect.top + player.offsetHeight / 2;
+        const objectCenterX = objectRect.left + object.offsetWidth / 2;
+        const objectCenterY = objectRect.top + object.offsetHeight / 2;
+
+        const distanceX = Math.abs(playerCenterX - objectCenterX);
+        const distanceY = Math.abs(playerCenterY - objectCenterY);
+        const radiusSum = (player.offsetWidth + object.offsetWidth) / 4;
+
+        if (distanceX < radiusSum && distanceY < radiusSum) {
+          clearInterval(intervalId);
+          gameContainer.removeChild(object);
+          alert('Game Over! You got hit by a falling object.');
+          restartGame();
+        }
+      }, 50); // Update every 50 milliseconds
+    }
+
+    // Start the game
+    function startGame() {
+      timerId = setInterval(createFallingObject, intervalDuration);
+      speedTimerId = setInterval(increaseSpeed, speedIncreaseInterval);
+    }
+
+    // Stop the game
+    function stopGame() {
+      clearInterval(timerId);
+      clearInterval(speedTimerId);
+    }
+
+    // Reset the game
+    function resetGame() {
+      stopGame();
+      playerPosition = 50;
+      player.style.left = `${playerPosition}%`;
+      intervalDuration = 1000;
+      startGame();
+    }
+
+    // Restart the game after hitting the player
+    function restartGame() {
+      stopGame();
+      // Clear any existing falling objects
+      const fallingObjects = document.querySelectorAll('.falling-object');
+      fallingObjects.forEach(object => object.parentNode.removeChild(object));
+      resetGame();
+    }
+
+    // Increase the speed of falling objects
+    function increaseSpeed() {
+      intervalDuration -= 100;
+      stopGame();
+      startGame();
+    }
+
+    // Event listeners for player movement
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowLeft') {
+        movePlayer(-1); // Move left
+      } else if (event.key === 'ArrowRight') {
+        movePlayer(1); // Move right
+      }
+    });
+
+    // Start the game when the page loads
+    startGame();
+  </script>
+</body>
+</html>

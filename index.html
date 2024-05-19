@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width= , initial-scale=1.0" />
+    <title>Socify</title>
+    <link rel="shortcut icon" href="images/tit.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v2.1.6/css/unicons.css"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <!-- navbar -->
+      <nav>
+            <div class="container">
+                <div class="logo">
+                    
+                </div>
+                
+                <div class="search-bar">
+                    <i class="uil uil-search"></i>
+                    <input
+                    type="search"
+                    placeholder="Search for creators, inspirations and projects"
+                    />
+                </div>
+                <div class="login" onclick="login()">
+                    <h3>Login</h3>
+                    
+                </div>
+                <div class="profilesss">
+                    <h3>Profile</h3>
+                </div>
+            </div>
+      </nav>
+      <!-- body part -->
+      <main id="main">
+          <div class="container">
+            <!-- leftpart -->
+              <div class="left">
+                  <a class="profile">
+                      <div class="profile-pic">
+                        <img src="https://cdn2.vectorstock.com/i/1000x1000/95/56/user-profile-icon-avatar-or-person-vector-45089556.jpg" class="prof">
+                      </div>
+                      <form id="form">
+                        <label for="fileInput">Upload pp</label>
+                        <input type="file" id="fileInput" class="upd" accept="image/*" required>
+                        <button type="submit">Upload</button>
+                    </form>
+                      <div class="handle">
+                          <h4 class="usrs">User</h4>
+                          <p class="text-muted usrs" >@User</p>
+                      </div>
+                  </a>
+                  <!-- sidebaar -->
+                  <div class="sidebar settingcolor">
+                    <a class="menu-item active">
+                      <span><i class="uil uil-home"></i></span> <h3>Home</h3>
+                    </a>
+                    <a class="menu-item " href="hamroShop.html">
+                      <span><i class="uil uil-compass"></i></span> <h3>Hamro Shop</h3>
+                    </a>
+                    <a class="menu-item" id="notifications">
+                      <span><i class="uil uil-bell"><small class="notification-count">9+</small></i></span> <h3>Notifications</h3>
+                      <div class="notifications-popup">
+                          <div>
+                              <div class="profile-pic">
+                                  <img src="./images/namipp.jpg" >
+                              </div>
+                              <div class="notification-body">
+                                  <b>Nami</b> accepted your friend request
+                                  <small class="text-muted">2 DAYS AGO</small>
+                              </div>
+                          </div>
+                          <div>
+                              <div class="profile-pic">
+                                  <img src="./images/boapp.jpg" >
+                              </div>
+                              <div class="notification-body">
+                                  <b>Boa</b> commented on your post
+                                  <small class="text-muted">1 HOUR AGO</small>
+                              </div>
+                          </div>
+                          <div>
+                              <div class="profile-pic">
+                                  <img src="./images/robinpp.jpg" >
+                              </div>
+                              <div class="notification-body">
+                                  <b>Robin</b> and 210 other liked your post
+                                  <small class="text-muted">4 MINUTES AGO</small>
+                              </div>
+                          </div>
+                          
+                      </div>
+                    </a>
+                    <a class="menu-item" id="messages-notifications" href="chat.html">
+                        <i class="uil uil-envelope"><small class="notification-count">6</small></i></span><h3>Messages</h3>
+                    </a>
+                    <a class="menu-item " href="games.html">
+                      <span><i class="uil uil-bookmark"></i></span> <h3>Games</h3>
+                    </a>
+                    <a class="menu-item " href="team.html">
+                      <span><i class="uil uil-palette"></i></span> <h3>Teams</h3>
+                    </a>
+                    <a class="menu-item " id="settings">
+                      <span><i class="uil uil-setting"></i></span> <h3>Settings</h3>
+                      
+<div class="settings-popup" style="display: none;">
+    <div class="popup-header">
+      <h3>Settings</h3>
+ <!-- setting feature -->
+    </div>
+    <label for="backgroundColor" id="bgcolor" class="hedingss">Background Color:</label>
+    <input type="text" id="backgroundColor" class="incolor" placeholder="Enter color"> <br>
+    <button id="applyColor" class="applyColor">Apply Color</button> <br><br>
+    <label for="sectionColor" class="hedingss">Section Color:</label>
+    <input type="text" id="sectionColor" class="incolor" placeholder="Enter color"> <br>
+    <button id="applySectionColor" class="applyColor">Apply Section Color</button>
+    <label for="changeName" class="hedingss">Change Name:</label>
+    <input type="text" id="changeName" class="incolor" placeholder="Enter new name">
+    <button id="applyName" class="applyColor">Apply Name</button>
+  </div>
+  
+                    </a>
+                    
+                    <label class="btn btn-primary" for="create-post">Create Post</label>
+                </div>
+              </div>
+              
+
+<!-- middlepart -->
+              <div class="middle">
+                <div class="stories">
+                    <div class="story">
+                        <div class="profile-pic">
+                            <img src="https://cdn2.vectorstock.com/i/1000x1000/95/56/user-profile-icon-avatar-or-person-vector-45089556.jpg" alt="" class="prof">
+                        </div>
+                        <p class="name">Your Story</p>
+                    </div>
+                    <div class="story">
+                        <div class="profile-pic">
+                            <img src="./images/boapp.jpg" alt="">
+                        </div>
+                        <p class="name">Boa Hamcock</p>
+                    </div>
+                    <div class="story">
+                        <div class="profile-pic">
+                            <img src="./images/namipp.jpg" alt="">
+                        </div>
+                        <p class="name">Nami</p>
+                    </div>
+                    <div class="story">
+                        <div class="profile-pic">
+                            <img src="./images/sanjipp.jpg" alt="">
+                        </div>
+                        <p class="name">Vinesmoke Sanji</p>
+                    </div>
+                    <div class="story">
+                        <div class="profile-pic">
+                            <img src="./images/luffypp.jpg" alt="">
+                        </div>
+                        <p class="name">Monkey D. Luffy</p>
+                    </div>
+                    <div class="story">
+                        <div class="profile-pic">
+                            <img src="./images/robinpp.jpg" alt="">
+                        </div>
+                        <p class="name">Niko Robin</p>
+                    </div>
+                </div>
+
+                <div class="popup-story">
+                    <span>&times;</span>
+                    <img src="" alt="">
+                </div>
+
+                <form class="create-post settingcolor">
+                    <div class="profile-pic">
+                        <img src="https://cdn2.vectorstock.com/i/1000x1000/95/56/user-profile-icon-avatar-or-person-vector-45089556.jpg" alt="" class="prof">
+                    </div>
+                    <input type="text" placeholder="What's on your mind" id="userInput">
+                    <div class="createss" onclick="postInput()">Post</div>
+                </form>
+<!-- feeds -->
+                <div class="feeds">
+
+
+                    <div class="feed newes settingcolor">
+                        <div class="head">
+                            
+                        </div>
+                         <div class="user">
+                             <div class="profile-pic">
+                                 <img src="https://cdn2.vectorstock.com/i/1000x1000/95/56/user-profile-icon-avatar-or-person-vector-45089556.jpg" alt="" class="prof">
+                             </div>
+                             <div class="info">
+                                 <h3 class="usrs"></h3>
+                                 <small> 1 MINUTES AGO</small>
+                             </div >
+                             <SPAN class="edit"><i class="uil uil-ellipsis-h"></i></SPAN>
+                         </div>
+
+                         <h5 class="copy"></h5>
+                         
+
+                         <div class="action-button">
+                             <div class="interaction-button">
+                                 <span><i class="uil uil-heart"></i></span>
+                                 <span><i class="uil uil-comment"></i></span>
+                                 <span><i class="uil uil-share"></i></span>
+                             </div>
+                             <div class="bookmark">
+                                 <span><i class="uil uil-bookmark"></i></span>
+                             </div>
+                         </div>
+
+                        
+
+                    </div>
+
+
+                    <div class="feed settingcolor">
+                        <div class="head">
+                            
+                        </div>
+                         <div class="user">
+                             <div class="profile-pic">
+                                 <img src="images/sanjipp.jpg" alt="">
+                             </div>
+                             <div class="info">
+                                 <h3>Sanji</h3>
+                                 <small> 3 HOURS AGO</small>
+                             </div >
+                             <SPAN class="edit"><i class="uil uil-ellipsis-h"></i></SPAN>
+                         </div>
+
+                         <div class="photo">
+                             <img src="https://i.pinimg.com/564x/06/b3/ea/06b3ea88fdcdd6660c8d8fb6e97fa1f5.jpg" alt="">
+                         </div>
+
+                         <div class="action-button">
+                             <div class="interaction-button">
+                                 <span><i class="uil uil-heart"></i></span>
+                                 <span><i class="uil uil-comment"></i></span>
+                                 <span><i class="uil uil-share"></i></span>
+                             </div>
+                             <div class="bookmark">
+                                 <span><i class="uil uil-bookmark"></i></span>
+                             </div>
+                         </div>
+
+                         <div class="liked-by">
+                             <span><img src="images/zoropp.jpg"></span>
+                             <span><img src="images/luffypp.jpg"></span>
+                             <span><img src="images/namipp.jpg"></span>
+                             ,<p>Liked by <b>You</b>and <b>280 others</b></p>
+                         </div>
+
+                         <div class="caption">
+                             <p><b>Sanji</b>Mosshead
+                            </p>
+                         </div>
+                         <div class="comments text-muted">View all 110 comments</div>
+                    </div>
+
+
+                    <div class="feed settingcolor">
+                        <div class="head">
+                            
+                        </div>
+                         <div class="user">
+                             <div class="profile-pic">
+                                 <img src="images/luffypp.jpg" alt="">
+                             </div>
+                             <div class="info">
+                                 <h3>Luffy</h3>
+                                 <small>1 HOUR AGO</small>
+                             </div >
+                             <SPAN class="edit"><i class="uil uil-ellipsis-h"></i></SPAN>
+                         </div>
+
+                         <div class="photo">
+                             <img src="https://i.pinimg.com/564x/82/a4/75/82a47526700b03819887b377c6c97818.jpg" alt="">
+                         </div>
+
+                         <div class="action-button">
+                             <div class="interaction-button">
+                                 <span><i class="uil uil-heart"></i></span>
+                                 <span><i class="uil uil-comment"></i></span>
+                                 <span><i class="uil uil-share"></i></span>
+                             </div>
+                             <div class="bookmark">
+                                 <span><i class="uil uil-bookmark"></i></span>
+                             </div>
+                         </div>
+
+                         <div class="liked-by">
+                             <span><img src="images/namipp.jpg"></span>
+                             <span><img src="images/boapp.jpg"></span>
+                             <span><img src="images/robinpp.jpg"></span>
+                             ,<p>Liked by <b>Nami</b>and <b>188 others</b></p>
+                         </div>
+
+                         <div class="caption">
+                             <p><b>Luffy</b>Gonna be king of pirates.
+                           </p>
+                         </div>
+                         <div class="comments text-muted">View all 40 comments</div>
+                    </div>
+
+
+                    <div class="feed settingcolor">
+                        <div class="head">
+                            
+                        </div>
+                         <div class="user">
+                             <div class="profile-pic">
+                                 <img src="images/namipp.jpg" alt="">
+                             </div>
+                             <div class="info">
+                                 <h3>Nami</h3>
+                                 <small> 15 MINUTES AGO</small>
+                             </div >
+                             <SPAN class="edit"><i class="uil uil-ellipsis-h"></i></SPAN>
+                         </div>
+
+                         <div class="photo">
+                             <img src="https://i.pinimg.com/564x/7c/a6/75/7ca6757d02e895f505027b60056c0291.jpg" alt="">
+                         </div>
+
+                         <div class="action-button">
+                             <div class="interaction-button">
+                                 <span><i class="uil uil-heart"></i></span>
+                                 <span><i class="uil uil-comment"></i></span>
+                                 <span><i class="uil uil-share"></i></span>
+                             </div>
+                             <div class="bookmark">
+                                 <span><i class="uil uil-bookmark"></i></span>
+                             </div>
+                         </div>
+
+                         <div class="liked-by">
+                             <span><img src="images/boapp.jpg"></span>
+                             <span><img src="images/luffypp.jpg"></span>
+                             <span><img src="images/sanjipp.jpg"></span>
+                             ,<p>Liked by <b>Boa</b>and <b>220 others</b></p>
+                         </div>
+
+                         <div class="caption">
+                             <p><b>Nami</b>Bounties.
+                            </p>
+                         </div>
+                         <div class="comments text-muted">View all 130 comments</div>
+                    </div>
+                
+                    
+                
+                    <div class="feed settingcolor">
+                        <div class="head">
+                            
+                        </div>
+                         <div class="user">
+                             <div class="profile-pic">
+                                 <img src="images/boapp.jpg" alt="">
+                             </div>
+                             <div class="info">
+                                 <h3>Boa</h3>
+                                 <small> 7 HOURS AGO</small>
+                             </div >
+                             <SPAN class="edit"><i class="uil uil-ellipsis-h"></i></SPAN>
+                         </div>
+
+                         <div class="photo">
+                             <img src="https://i.pinimg.com/564x/37/41/09/37410992b40c6df7ca8ac0590219393e.jpg" alt="">
+                         </div>
+
+                         <div class="action-button">
+                             <div class="interaction-button">
+                                 <span><i class="uil uil-heart"></i></span>
+                                 <span><i class="uil uil-comment"></i></span>
+                                 <span><i class="uil uil-share"></i></span>
+                             </div>
+                             <div class="bookmark">
+                                 <span><i class="uil uil-bookmark"></i></span>
+                             </div>
+                         </div>
+
+                         <div class="liked-by">
+                             <span><img src="images/luffypp.jpg"></span>
+                             <span><img src="images/namipp.jpg"></span>
+                             <span><img src="images/robinpp.jpg"></span>
+                             ,<p>Liked by <b>Luffy</b>and <b>130 others</b></p>
+                         </div>
+
+                         <div class="caption">
+                             <p><b>Boa</b>MyMan
+                            </p>
+                         </div>
+                         <div class="comments text-muted">View all 15 comments</div>
+                    </div>
+                
+                    <div class="feed settingcolor">
+                        <div class="head">
+                            
+                        </div>
+                         <div class="user">
+                             <div class="profile-pic">
+                                 <img src="images/sanjipp.jpg" alt="">
+                             </div>
+                             <div class="info">
+                                 <h3>Sanji</h3>
+                                 <small> 3 HOURS AGO</small>
+                             </div >
+                             <SPAN class="edit"><i class="uil uil-ellipsis-h"></i></SPAN>
+                         </div>
+
+                         <div class="photo">
+                             <img src="https://i.pinimg.com/564x/06/b3/ea/06b3ea88fdcdd6660c8d8fb6e97fa1f5.jpg" alt="">
+                         </div>
+
+                         <div class="action-button">
+                             <div class="interaction-button">
+                                 <span><i class="uil uil-heart"></i></span>
+                                 <span><i class="uil uil-comment"></i></span>
+                                 <span><i class="uil uil-share"></i></span>
+                             </div>
+                             <div class="bookmark">
+                                 <span><i class="uil uil-bookmark"></i></span>
+                             </div>
+                         </div>
+
+                         <div class="liked-by">
+                             <span><img src="images/zoropp.jpg"></span>
+                             <span><img src="images/luffypp.jpg"></span>
+                             <span><img src="images/namipp.jpg"></span>
+                             ,<p>Liked by <b>You</b>and <b>280 others</b></p>
+                         </div>
+
+                         <div class="caption">
+                             <p><b>Sanji</b>Mosshead
+                            </p>
+                         </div>
+                         <div class="comments text-muted">View all 110 comments</div>
+                    </div>
+                
+                    <div class="feed settingcolor">
+                        <div class="head">
+                            
+                        </div>
+                         <div class="user">
+                             <div class="profile-pic">
+                                 <img src="images/namipp.jpg" alt="">
+                             </div>
+                             <div class="info">
+                                 <h3>Nami</h3>
+                                 <small> 1 DAY AGO</small>
+                             </div >
+                             <SPAN class="edit"><i class="uil uil-ellipsis-h"></i></SPAN>
+                         </div>
+
+                         <div class="photo">
+                             <img src="https://i.pinimg.com/564x/92/d5/70/92d5707c299aa7a522839b99f9435ec8.jpg" alt="">
+                         </div>
+
+                         <div class="action-button">
+                             <div class="interaction-button">
+                                 <span><i class="uil uil-heart"></i></span>
+                                 <span><i class="uil uil-comment"></i></span>
+                                 <span><i class="uil uil-share"></i></span>
+                             </div>
+                             <div class="bookmark">
+                                 <span><i class="uil uil-bookmark"></i></span>
+                             </div>
+                         </div>
+
+                         <div class="liked-by">
+                             <span><img src="images/robinpp.jpg"></span>
+                             <span><img src="images/luffypp.jpg"></span>
+                             <span><img src="images/sanjipp.jpg"></span>
+                             ,<p>Liked by <b>Robin</b>and <b>420 others</b></p>
+                         </div>
+
+                         <div class="caption">
+                             <p><b>Nami</b>Us
+                            </p>
+                         </div>
+                         <div class="comments text-muted">View all 120 comments</div>
+                    </div>
+                
+                    <div class="feed settingcolor">
+                        <div class="head">
+                            
+                        </div>
+                         <div class="user">
+                             <div class="profile-pic">
+                                 <img src="images/zoropp.jpg" alt="">
+                             </div>
+                             <div class="info">
+                                 <h3>Roronoa Zoro</h3>
+                                 <small> 30 MINUTES AGO</small>
+                             </div >
+                             <SPAN class="edit"><i class="uil uil-ellipsis-h"></i></SPAN>
+                         </div>
+
+                         <div class="photo">
+                             <img src="https://i.pinimg.com/736x/50/74/79/507479b3e6d28030810626fd3dae06ea.jpg" alt="">
+                         </div>
+
+                         <div class="action-button">
+                             <div class="interaction-button">
+                                 <span><i class="uil uil-heart"></i></span>
+                                 <span><i class="uil uil-comment"></i></span>
+                                 <span><i class="uil uil-share"></i></span>
+                             </div>
+                             <div class="bookmark">
+                                 <span><i class="uil uil-bookmark"></i></span>
+                             </div>
+                         </div>
+
+                         <div class="liked-by">
+                             <span><img src="images/luffypp.jpg"></span>
+                             <span><img src="images/sanjipp.jpg"></span>
+                             <span><img src="images/robinpp.jpg"></span>
+                             ,<p>Liked by <b>Luffy</b>and <b>150 others</b></p>
+                         </div>
+
+                         <div class="caption">
+                             <p><b>Zoro</b>1 sword style
+                            </p>
+                         </div>
+                         <div class="comments text-muted">View all 30 comments</div>
+                    </div>
+                    <div class="feed settingcolor">
+                        <div class="head">
+                            
+                        </div>
+                         <div class="user">
+                             <div class="profile-pic">
+                                 <img src="images/luffypp.jpg" alt="">
+                             </div>
+                             <div class="info">
+                                 <h3>Luffy</h3>
+                                 <small> 11 HOURS AGO</small>
+                             </div >
+                             <SPAN class="edit"><i class="uil uil-ellipsis-h"></i></SPAN>
+                         </div>
+
+                         <div class="photo">
+                             <img src="https://i.pinimg.com/564x/29/b1/e4/29b1e4da06925918289f42c48f195b23.jpg" alt="">
+                         </div>
+
+                         <div class="action-button">
+                             <div class="interaction-button">
+                                 <span><i class="uil uil-heart"></i></span>
+                                 <span><i class="uil uil-comment"></i></span>
+                                 <span><i class="uil uil-share"></i></span>
+                             </div>
+                             <div class="bookmark">
+                                 <span><i class="uil uil-bookmark"></i></span>
+                             </div>
+                         </div>
+
+                         <div class="liked-by">
+                             <span><img src="images/zoropp.jpg"></span>
+                             <span><img src="images/sanjipp.jpg"></span>
+                             <span><img src="images/boapp.jpg"></span>
+                             ,<p>Liked by <b>Zoro</b>snd <b>530 others</b></p>
+                         </div>
+
+                         <div class="caption">
+                             <p><b>Luffy</b>My Wings
+                            </p>
+                         </div>
+                         <div class="comments text-muted">View all 190 comments</div>
+                    </div>
+                </div>
+              </div>
+              <!-- rightpart -->
+              <div class="right">
+                  <div class="messages settingcolor">
+                    <div class="heading">
+                        <h4>Messages</h4>
+                        <span><i class="uil uil-edit"></i></span>
+                    </div>
+  
+                    <div class="search-bar">
+                        <span><i class="uil uil-search"></i></span>
+                        <input type="search" placeholder="Search Messages" id="message-search">
+                    </div>
+  
+                    <div class="category ">
+                        <h6 class="active">Primary</h6>
+                       
+                        <h6 class="message-requests">Requests(7)</h6>
+                    </div>
+                    <div class="message">
+                        <div class="profile-pic">
+                            <img src="images/luffypp.jpg">
+                            <div class="active"></div>
+                        </div>
+                        <div class="message-body">
+                            <h5>Luffy</h5>
+                            <p class="text-muted">Meat...</p>
+                        </div>
+                    </div>                             
+                    <div class="message">
+                        <div class="profile-pic">
+                            <img src="images/robin.png">
+                            <div class="active"></div>
+                        </div>
+                        <div class="message-body">
+                            <h5>Robin</h5>
+                            <p class="text-bold">2 New Messages</p>
+                        </div>
+                    </div>                             
+                    <div class="message">
+                        <div class="profile-pic">
+                            <img src="images/namipp.jpg">
+                        </div>
+                        <div class="message-body">
+                            <h5>Nami</h5>
+                            <p class="text-muted">Baka</p>
+                        </div>
+                    </div>                             
+                    <div class="message">
+                        <div class="profile-pic">
+                            <img src="images/boapp.jpg">
+                        </div>
+                        <div class="message-body">
+                            <h5>Boa</h5>
+                            <p class="text-bold">Is luffy with you?</p>
+                        </div>
+                    </div>                             
+                    <div class="message">
+                        <div class="profile-pic">
+                            <img src="images/sanjipp.jpg">
+                        </div>
+                        <div class="message-body">
+                            <h5>Cook</h5>
+                            <p class="text-muted">Mosshead</p>
+                        </div>
+                    </div>                             
+                    <div class="message">
+                        <div class="profile-pic">
+                            <img src="https://preview.redd.it/u94fwvs2vuu41.png?auto=webp&s=c0773f800a80b01503241ca459ace8f0eddfa3cd">
+                            <div class="active"></div>
+                        </div>
+                        <div class="message-body">
+                            <h5>Group</h5>
+                            <p class="text-bold">3 New Messages</p>
+                        </div>
+                    </div>                                                        
+                </div>
+                <div class="friend-requests settingcolor">
+                    <h4>Requests</h4>
+                    <div class="request">
+                        <div class="info">
+                            <div class="profile-pic">
+                                <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/8d093e1a-2a6e-4be7-906d-bf94a43b4b41/df9vvb5-4106e2a4-ce77-43ab-abc8-6de3312aaad2.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzhkMDkzZTFhLTJhNmUtNGJlNy05MDZkLWJmOTRhNDNiNGI0MVwvZGY5dnZiNS00MTA2ZTJhNC1jZTc3LTQzYWItYWJjOC02ZGUzMzEyYWFhZDIuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.WJUw6SolcVA8nx4GB4eC3ayN9-AnM-eD6WhURZp2dh8">
+                            </div>
+                            <div>
+                                <h5>brook</h5>
+                                <p class="text-muted">8 mutual friends</p>
+                                
+                            </div>
+                        </div>
+                        <div class="action">
+                            <button class="btn btn-primary bn">Accept</button>
+                            <button class="btn">Decline</button>
+                        </div>
+                    </div>
+                    <div class="request">
+                        <div class="info">
+                            <div class="profile-pic">
+                                <img src="https://i.pinimg.com/736x/51/64/b8/5164b8036b19c8bfe9f37d915c74769a.jpg">
+                            </div>
+                            <div>
+                                <h5>Chopper</h5>
+                                <p class="text-muted">2 mutual friends</p>
+                                
+                            </div>
+                        </div>
+                        <div class="action">
+                            <button class="btn btn-primary bn">Accept</button>
+                            <button class="btn">Decline</button>
+                        </div>
+                    </div>
+                    <div class="request">
+                        <div class="info">
+                            <div class="profile-pic">
+                                <img src="https://i.pinimg.com/474x/2e/7b/b0/2e7bb0a05eeb6521487ed55eabad0f29.jpg">
+                            </div>
+                            <div>
+                                <h5>Franky</h5>
+                                <p class="text-muted">1 mutual friend</p>
+                                
+                            </div>
+                        </div>
+                        <div class="action">
+                            <button class="btn btn-primary bn">Accept</button>
+                            <button class="btn">Decline</button>
+                        </div>
+                    </div>
+            
+              </div> 
+
+
+               
+              </div>
+          </div>
+      </main>
+
+
+
+      <div class="login-box">
+        <form action="">
+            <h2>Login</h2>
+            <div class="input-box">
+                <span class="icon"><i class="fa-solid fa-envelope"></i></span>
+                <input type="text" name="username" id="username" placeholder="Username" required>
+            </div>
+            <div class="input-box">
+                <span class="icon"><i class="fa-solid fa-lock"></i></span>
+                <input type="password" name="password" id="password" placeholder="Password" required>
+            </div>
+            
+            <div class="login1" onclick="signIn()">
+                <h3>Login</h3>
+            </div>
+           
+        </form>
+      </div>
+
+        <script src="index.js"></script>
+  </body>
+  
+</html>

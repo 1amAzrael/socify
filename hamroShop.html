@@ -1,0 +1,249 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="shop.css">
+    <title>Hamro Shop</title>
+</head>
+
+<body> <div class="all">
+    <div class="checkmsg">
+        <h3>Your order has been placed!!</h3>
+        <button class="bt" onclick="closemsg()">Close</button>
+    </div>
+</div>
+  
+
+    <nav id="nav">
+        <div class="navTop">
+            <a href="index.html"><div class="navItem logo">
+                
+            </div></a>
+            <div class="navItem">
+                <div class="search">
+                    <input type="text" placeholder="Search..." class="searchInput">
+                    <img src="./img/search.png" width="20" height="20" alt="" class="searchIcon">
+                </div>
+            </div>
+            <div class="navItem">
+                <span class="limitedOffer">Limited Offer!</span>
+            </div>
+        </div>
+        <div class="navBottom">
+            <h3 class="menuItem">ASUS</h3>
+            <h3 class="menuItem">NITRO 5</h3>
+            <h3 class="menuItem">DRAGON</h3>
+            <h3 class="menuItem">CROWN</h3>
+            <h3 class="menuItem">SETUP</h3>
+        </div>
+    </nav>
+    <div class="slider">
+        <div class="sliderWrapper">
+            <div class="sliderItem">
+                <img src="./img/ASUS.png" alt="" class="sliderImg">
+                <div class="sliderBg"></div>
+                <h1 class="sliderTitle">ASUS</br> </h1>
+                <h2 class="sliderPrice">RS1,19,000</h2>
+                <a href="#product">
+                    <button class="buyButton">BUY NOW!</button>
+                </a>
+            </div>
+            <div class="sliderItem">
+                <img src="./img/ACER.png" alt="" class="sliderImg">
+                <div class="sliderBg"></div>
+                <h1 class="sliderTitle"> NITRO</br> 5</h1>
+                <h2 class="sliderPrice">RS1,19,000</h2>
+                <a href="#product">
+                    <button class="buyButton">BUY NOW!</button>
+                </a>
+            </div>
+            <div class="sliderItem">
+                <img src="./img/dragon.png" alt="" class="sliderImg">
+                <div class="sliderBg"></div>
+                <h1 class="sliderTitle">DRAGON</br></br> </h1>
+                <h2 class="sliderPrice">RS1,19,000</h2>
+                <a href="#product">
+                    <button class="buyButton">BUY NOW!</button>
+                </a>
+            </div>
+            <div class="sliderItem">
+                <img src="./img/White crown.png" alt="" class="sliderImg">
+                <div class="sliderBg"></div>
+                <h1 class="sliderTitle"> CROWN</br> </h1>
+                <h2 class="sliderPrice">RS1,19,000</h2>
+                <a href="#product">
+                    <button class="buyButton">BUY NOW!</button>
+                </a>
+            </div>
+            <div class="sliderItem">
+                <img src="./img/lapsetup.png" alt="" class="sliderImg">
+                <div class="sliderBg"></div>
+                <h1 class="sliderTitle">FULL</br> SETUP</h1>
+                <h2 class="sliderPrice">RS1,19,000</h2>
+                <a href="#product">
+                    <button class="buyButton">BUY NOW!</button>
+                </a>
+            </div>
+        </div>
+    </div>
+   
+    <div class="features">
+        <div class="feature">
+            <img src="./img/shipping.png" alt="" class="featureIcon">
+            <span class="featureTitle">FREE SHIPPING</span>
+            <span class="featureDesc">Free worldwide shipping on all orders.</span>
+        </div>
+        <div class="feature">
+            <img class="featureIcon" src="./img/return.png" alt="">
+            <span class="featureTitle">30 DAYS RETURN</span>
+            <span class="featureDesc">No question return and easy refund in 14 days.</span>
+        </div>
+        <div class="feature">
+            <img class="featureIcon" src="./img/gift.png" alt="">
+            <span class="featureTitle">GIFT CARDS</span>
+            <span class="featureDesc">Buy gift cards and use coupon codes easily.</span>
+        </div>
+        <div class="feature">
+            <img class="featureIcon" src="./img/contact.png" alt="">
+            <span class="featureTitle">CONTACT US!</span>
+            <span class="featureDesc">Keep in touch via email and support system.</span>
+        </div>
+    </div>
+
+    <div class="product" id="product">
+        <img src="./img/ASUS.png" alt="" class="productImg">
+        <div class="productDetails">
+            <h1 class="productTitle">ASUS</h1>
+            <h2 class="productPrice">RS1,19,000</h2>
+            <p class="productDesc">ASUS New Generation gaming laptop </p>
+           
+            <div class="sizes">
+                <div class="size">4</div>
+                <div class="size">8</div>
+                <div class="size">16</div>
+            </div>
+            <button class="productButton">BUY NOW!</button>
+        </div>
+        <div class="payment">
+            <h1 class="payTitle">Personal Information</h1>
+            <label>Full Name</label>
+            <input type="text" placeholder="Sangam Bakhunchhe" class="payInput">
+            <label>Phone Number</label>
+            <input type="text" placeholder="+977" class="payInput">
+            <label>Address</label>
+            <input type="text" placeholder="Kathmandu, Nepal" class="payInput">
+            <h1 class="payTitle">Card Information</h1>
+            <div class="cardIcons">
+                <img src="./img/visa.png" width="40" alt="" class="cardIcon">
+                <img src="./img/master.png" alt="" width="40" class="cardIcon">
+            </div>
+            <input type="password" class="payInput" placeholder="Card Number">
+            <div class="cardInfo">
+                <input type="text" placeholder="mm" class="payInput sm">
+                <input type="text" placeholder="yyyy" class="payInput sm">
+                <input type="text" placeholder="cvv" class="payInput sm">
+            </div>
+            <button class="payButton" onclick="showmsg()">Checkout!</button>
+            <span class="close">X</span>
+        </div>
+       
+    </div>
+    <div class="gallery">
+        <div class="galleryItem">
+            <h1 class="galleryTitle">Enjoy Gaming</h1>
+            <img src="https://i.pinimg.com/564x/2b/c2/7b/2bc27b170e927ba28836f5e27b2ea88c.jpg"
+                alt="" class="galleryImg">
+        </div>
+        <div class="galleryItem">
+            <img src="https://i.pinimg.com/736x/e2/24/a2/e224a23104e5464bd941f0dc60fa4ba1.jpg"
+                alt="" class="galleryImg">
+            <h1 class="galleryTitle">Set up like a pro</h1>
+        </div>
+        <div class="galleryItem">
+            <h1 class="galleryTitle">Just Do it!</h1>
+            <img src="https://i.pinimg.com/736x/e8/11/c2/e811c299667d912dec3334524f2e1fda.jpg"
+                alt="" class="galleryImg">
+        </div>
+    </div>
+    <div class="newSeason">
+        <div class="nsItem">
+            <img src="https://i.pinimg.com/564x/fc/0d/cb/fc0dcb2ae104e6f259d3e428caa0b6c9.jpg"
+                alt="" class="nsImg">
+        </div>
+        <div class="nsItem">
+            <h3 class="nsTitleSm">NEW ARRIVALS</h3>
+            <h1 class="nsTitle">New Season</h1>
+            <h1 class="nsTitle">New Collection</h1>
+            <a href="#nav">
+                <button class="nsButton">CHOOSE YOUR GAMEPLAY</button>
+            </a>
+        </div>
+        <div class="nsItem">
+            <img src="https://i.pinimg.com/736x/95/ed/5f/95ed5fb6abd966cb7b7d9b887a5e687d.jpg"
+                alt="" class="nsImg">
+        </div>
+    </div>
+    <footer>
+        <div class="footerLeft">
+            <div class="footerMenu">
+                <h1 class="fMenuTitle">About Us</h1>
+                <ul class="fList">
+                    <li class="fListItem">Company</li>
+                    <li class="fListItem">Contact</li>
+                    <li class="fListItem">Careers</li>
+                    <li class="fListItem">Affiliates</li>
+                    <li class="fListItem">Stores</li>
+                </ul>
+            </div>
+            <div class="footerMenu">
+                <h1 class="fMenuTitle">Useful Links</h1>
+                <ul class="fList">
+                    <li class="fListItem">Support</li>
+                    <li class="fListItem">Refund</li>
+                    <li class="fListItem">FAQ</li>
+                    <li class="fListItem">Feedback</li>
+                    <li class="fListItem">Stories</li>
+                </ul>
+            </div>
+            <div class="footerMenu">
+                <h1 class="fMenuTitle">Products</h1>
+                <ul class="fList">
+                    <li class="fListItem">ASUS</li>
+                    <li class="fListItem">NITRO 5</li>
+                    <li class="fListItem">DRAGON</li>
+                    <li class="fListItem">CROWN</li>
+                    <li class="fListItem">SETUP</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footerRight">
+            <div class="footerRightMenu">
+                <h1 class="fMenuTitle">Subscribe to our newsletter</h1>
+                <div class="fMail">
+                    <input type="text" placeholder="your@email.com" class="fInput">
+                    <button class="fButton">Join!</button>
+                </div>
+            </div>
+            <div class="footerRightMenu">
+                <h1 class="fMenuTitle">Follow Us</h1>
+                <div class="fIcons">
+                    <img src="./img/facebook.png" alt="" class="fIcon">
+                    <img src="./img/twitter.png" alt="" class="fIcon">
+                    <img src="./img/instagram.png" alt="" class="fIcon">
+                    <img src="./img/whatsapp.png" alt="" class="fIcon">
+                </div>
+            </div>
+            <div class="footerRightMenu">
+                <span class="copyright">@Hamro Dev. All rights reserved. 2022.</span>
+            </div>
+        </div>
+    </footer>
+    <script src="shop.js"></script>
+</body>
+
+</html>

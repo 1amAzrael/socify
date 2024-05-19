@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infinite Runner Game</title>
+<style>
+  body {
+    margin: 0;
+    overflow: hidden;
+    background-color: #f7f7f7;
+    background-image: url(./img/sky.jpg); /* Placeholder image URL */
+    
+    animation: moveBackground 10s linear infinite; /* Adjust duration and timing function as needed */
+  }
+
+  @keyframes moveBackground {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: 100% 0;
+    }
+  }
+
+  #game-container {
+    width: 100%;
+    height: 60vh;
+    margin: auto;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 5px solid green;
+  }
+  #player {
+    position: absolute;
+    bottom: 0;
+    left: 35px; /* Initial position */
+    width: 85px;
+    height: 70px;
+    background-image: url(./img/nezuko.png);
+    background-size: cover;
+  }
+  .obstacle {
+    position: absolute;
+    bottom: 0;
+    width: 50px;
+    height: 50px;
+    background-image: url(./img/demons.png);
+    background-size: cover;
+    display: none;
+  }
+  #score {
+    position: fixed;
+    top: 100px;
+    right: 750px;
+    font-size: 50px;
+    font-weight: bold;
+    z-index: 1111;
+    color: #000;
+
+  }
+</style>
+</head>
+<body>
+<div id="game-container">
+  <div id="player"></div>
+</div>
+<div id="score">Score: <span id="score-value">0</span></div>
+<script>
+const gameContainer = document.getElementById('game-container');
+const player = document.getElementById('player');
+const scoreElement = document.getElementById('score-value');
+let playerBottom = 0;
+let playerLeft = 50; // Initial position
+let jumping = false;
+let jumpStrength = 25;
+let gravity = 7;
+let obstacleSpeed = 5;
+let obstacleInterval;
+let score = 0;
+
+document.addEventListener('keydown', function(event) {
+  if (event.code === 'Space' && !jumping) {
+    jumping = true;
+    jump();
+  }
+});
+
+function jump() {
+  let jumpInterval = setInterval(function() {
+    if (playerBottom >= 150) { // Max jump height
+      clearInterval(jumpInterval);
+      falling();
+    } else {
+      playerBottom += jumpStrength;
+      player.style.bottom = playerBottom + 'px';
+    }
+  }, 20);
+}
+
+function falling() {
+  let fallInterval = setInterval(function() {
+    if (playerBottom <= 0) { // Player hits the ground
+      playerBottom = 0;
+      player.style.bottom = playerBottom + 'px';
+      jumping = false;
+      clearInterval(fallInterval);
+    } else {
+      playerBottom -= gravity;
+      player.style.bottom = playerBottom + 'px';
+    }
+  }, 20);
+}
+
+function createObstacle() {
+  const obstacle = document.createElement('div');
+  obstacle.classList.add('obstacle');
+  obstacle.style.left = '1000%'; // Start from the right edge
+  obstacle.style.bottom = '0';
+  gameContainer.appendChild(obstacle);
+
+  obstacle.style.display = 'block'; // Make obstacle visible
+
+  let obstacleInterval = setInterval(function() {
+    const obstacleLeft = parseInt(obstacle.style.left);
+    if (obstacleLeft <= -50) { // Remove the obstacle when it's out of the game box
+      clearInterval(obstacleInterval);
+      gameContainer.removeChild(obstacle);
+    } else {
+      obstacle.style.left = obstacleLeft - obstacleSpeed + 'px'; // Adjust the obstacle speed
+    }
+
+    // Check collision with player
+    const playerCenterX = playerLeft + player.offsetWidth / 2;
+    const playerCenterY = playerBottom + player.offsetHeight / 2;
+    const obstacleCenterX = obstacleLeft + obstacle.offsetWidth / 2;
+    const obstacleCenterY = 25; // Adjust this to half the obstacle height
+    const distanceX = Math.abs(playerCenterX - obstacleCenterX);
+    const distanceY = Math.abs(playerCenterY - obstacleCenterY);
+    const radiusSum = (player.offsetWidth + obstacle.offsetWidth) / 4;
+
+    if (distanceX < radiusSum && distanceY < radiusSum) {
+      clearInterval(obstacleInterval); // Stop obstacle movement
+      obstacle.style.display = 'none'; // Hide the obstacle
+      gameOver();
+    }
+  }, 20);
+}
+
+function increaseScore() {
+  score++;
+  scoreElement.textContent = score;
+}
+
+function startGame() {
+  obstacleInterval = setInterval(createObstacle, 2000); // Adjust obstacle generation frequency
+  setInterval(increaseScore, 1000); // Increase score every second
+}
+
+function gameOver() {
+  alert('Game Over! Your score: ' + score);
+  clearInterval(obstacleInterval);
+  location.reload(); // Restart the game by reloading the page
+}
+
+startGame();
+</script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Guessing Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #131111;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 50px auto;
+            text-align: center;
+            position: relative;
+            top: 200px;
+        }
+
+        input[type="number"] {
+            padding: 8px;
+            width: 100px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 style="color: white;">Number Guessing Game</h1>
+        <p style="color: white;">Guess a number between 1 and 100:</p>
+        <input type="number" id="guess" min="1" max="100">
+        <button onclick="checkGuess()">Guess</button>
+        <button onclick="restartGame()">Restart</button>
+        <p style="color: white;" id="message"></p>
+    </div>
+
+    <script>
+        // Generate a random number between 1 and 100
+        let randomNumber = Math.floor(Math.random() * 100) + 1;
+
+        let attempts = 0;
+
+        function checkGuess() {
+            const userGuess = parseInt(document.getElementById('guess').value);
+            const messageElement = document.getElementById('message');
+
+            if (isNaN(userGuess) || userGuess < 1 || userGuess > 100) {
+                messageElement.textContent = "Please enter a valid number between 1 and 100.";
+                return;
+            }
+
+            attempts++;
+
+            if (userGuess === randomNumber) {
+                messageElement.textContent = "Congratulations! You won!";
+            } else if (attempts === 5) {
+                messageElement.textContent = `Sorry, you lost. The correct number was ${randomNumber}.`;
+            } else if (userGuess < randomNumber) {
+                messageElement.textContent = "Higher. Try again.";
+            } else {
+                messageElement.textContent = "Lower. Try again.";
+            }
+        }
+
+        function restartGame() {
+            attempts = 0;
+            randomNumber = Math.floor(Math.random() * 100) + 1;
+            document.getElementById('guess').value = "";
+            document.getElementById('message').textContent = "";
+        }
+    </script>
+</body>
+</html>

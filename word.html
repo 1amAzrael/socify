@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Word Guessing Game</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #131111;
+  }
+  h1{
+    position: relative;
+    top: 290px;
+  }
+  #game-container {
+    margin: auto;
+    max-width: 600px;
+    position: relative;
+    top: 300px;
+  }
+  #word-display {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  #guess-input {
+    font-size: 20px;
+    padding: 10px;
+    width: 80%;
+    margin-bottom: 20px;
+  }
+  #guess-button, #hint-button, #reset-button {
+    font-size: 18px;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    cursor: pointer;
+  }
+  #message {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+</style>
+</head>
+<body>
+  <h1 style="color: white;">Word Guessing Game</h1>
+  <div id="game-container">
+    <div style="color: white;" id="word-display"></div>
+    <input type="text" id="guess-input" placeholder="Enter a letter" >
+    <button id="guess-button">Guess</button>
+    <button id="hint-button">Hint</button>
+    <button id="reset-button">Reset</button>
+    <div style="color: white;" id="message"></div>
+  </div>
+
+  <script>
+    const words = ["javascript", "html", "css", "python", "java", "ruby", "php", "typescript"];
+    const maxIncorrectGuesses = 6; // Maximum allowed incorrect guesses
+
+    let word;
+    let guessedLetters;
+    let incorrectGuesses;
+
+    const wordDisplay = document.getElementById('word-display');
+    const guessInput = document.getElementById('guess-input');
+    const guessButton = document.getElementById('guess-button');
+    const hintButton = document.getElementById('hint-button');
+    const resetButton = document.getElementById('reset-button');
+    const message = document.getElementById('message');
+
+    // Initialize the game
+    function initGame() {
+      word = getRandomWord();
+      guessedLetters = new Set();
+      incorrectGuesses = 0;
+      renderWordDisplay();
+      guessInput.value = '';
+      message.textContent = '';
+      enableInput();
+    }
+
+    // Get a random word from the words array
+    function getRandomWord() {
+      return words[Math.floor(Math.random() * words.length)];
+    }
+
+    // Render the word display with blanks for unguessed letters
+    function renderWordDisplay() {
+      wordDisplay.innerHTML = '';
+      for (const letter of word) {
+        if (guessedLetters.has(letter)) {
+          wordDisplay.innerHTML += letter + ' ';
+        } else {
+          wordDisplay.innerHTML += '_ ';
+        }
+      }
+    }
+
+    // Check if the player has won
+    function checkWin() {
+      for (const letter of word) {
+        if (!guessedLetters.has(letter)) {
+          return false;
+        }
+      }
+      return true;
+    }
+
+    // Check if the guessed letter is in the word
+    function checkGuess() {
+      const guess = guessInput.value.toLowerCase();
+      if (guess.length !== 1 || !/[a-z]/.test(guess)) {
+        message.textContent = 'Please enter a single letter.';
+        return;
+      }
+      if (guessedLetters.has(guess)) {
+        message.textContent = 'You already guessed that letter.';
+        return;
+      }
+      if (word.includes(guess)) {
+        guessedLetters.add(guess);
+        renderWordDisplay();
+        if (checkWin()) {
+          message.textContent = 'Congratulations! You guessed the word correctly!';
+          disableInput();
+        }
+      } else {
+        incorrectGuesses++;
+        if (incorrectGuesses >= maxIncorrectGuesses) {
+          message.textContent = `Sorry, you lost. The word was "${word}".`;
+          disableInput();
+        } else {
+          message.textContent = `Incorrect guess! ${maxIncorrectGuesses - incorrectGuesses} guesses remaining.`;
+        }
+      }
+    }
+
+    // Disable input elements when the game is over
+    function disableInput() {
+      guessInput.disabled = true;
+      guessButton.disabled = true;
+      hintButton.disabled = true;
+    }
+
+    // Enable input elements at the start of a new game
+    function enableInput() {
+      guessInput.disabled = false;
+      guessButton.disabled = false;
+      hintButton.disabled = false;
+    }
+
+    // Event listener for guess button click
+    guessButton.addEventListener('click', function() {
+      checkGuess();
+      guessInput.value = ''; // Clear the input field after guessing
+    });
+
+    // Event listener for pressing Enter key in the guess input field
+    guessInput.addEventListener('keypress', function(event) {
+      if (event.key === 'Enter') {
+        checkGuess();
+        guessInput.value = ''; // Clear the input field after guessing
+      }
+    });
+
+    // Event listener for hint button click
+    hintButton.addEventListener('click', function() {
+      if (guessedLetters.size === word.length) {
+        message.textContent = 'You have already guessed all letters in the word.';
+        return;
+      }
+      let hintLetter;
+      do {
+        hintLetter = word[Math.floor(Math.random() * word.length)];
+      } while (guessedLetters.has(hintLetter));
+      guessedLetters.add(hintLetter);
+      renderWordDisplay();
+    });
+
+    // Event listener for reset button click
+    resetButton.addEventListener('click', function() {
+      initGame();
+    });
+
+    // Start the game when the page loads
+    window.addEventListener('load', function() {
+      initGame();
+    });
+  </script>
+</body>
+</html>
